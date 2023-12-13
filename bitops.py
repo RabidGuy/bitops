@@ -36,6 +36,9 @@ Iterables are treated as big-endian.
 
 """
 
+version = "v1.0.0"
+version_iterable = [1, 0, 0]
+
 import inspect
 
 
