@@ -36,8 +36,8 @@ Iterables are treated as big-endian.
 
 """
 
-version = "v1.0.0"
-version_iterable = [1, 0, 0]
+version = "v1.0.1"
+version_iterable = [1, 0, 1]
 
 import inspect
 
@@ -166,10 +166,13 @@ def _one(length):
 
 def _ensure_min_arg_count(min_count, *args):
     if len(args) < min_count:
-        raise TypeError("{}() expects at least {} arguments (given {})".format(inspect.stack()[1][3], min_count, len(args)))
+        raise TypeError(
+            "{}() expects at least {} arguments (given {})"
+            "".format(_parent_function_name(), min_count, len(args))
+        )
 
-def _local_function_name():
-    return inspect.stack()[1][3]
+def _parent_function_name(depth=1):
+    return inspect.stack()[depth+1][3]
 
 def _ensure_same_arg_length(*args):
     """If all args have same length, exit cleanly. Else, raise TypeError."""
@@ -178,7 +181,10 @@ def _ensure_same_arg_length(*args):
     if len(s) == 1:
         return
     else:
-        raise TypeError("{}() requires arguments to have same length (lengths given: {})".format(inspect.stack()[1][3], sorted(s)))
+        raise TypeError(
+            "{}() requires arguments to have same length (lengths given: {})"
+            "".format(_parent_function_name(), l)
+        )
 
 def _add_two_values(a, b):
     """Return sum of a and b as tuple."""
