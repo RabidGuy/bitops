@@ -31,6 +31,6 @@ Left shift (fill one)   | `op_ls1`         | `op_ls1([0, 0]) => (0, 1)`
 Right shift (fill zero) | `op_rs0`         | `op_rs0([1, 1]) => (0, 1)`
 Right shift (fill one)  | `op_rs1`         | `op_rs1([0, 0]) => (1, 0)`
 Add                     | `op_add`         | `op_add([0, 1], [0, 1]) => (1, 0)`
-Subtract                | `op_sub`         | `op_sub([1, 1], [0, 1]) => (0, 1)`
+Subtract                | `op_sub`         | `op_sub([1, 1], [0, 1]) => (1, 0)`
 Increment               | `op_inc`         | `op_inc([1, 0]) => (1, 1)`
 Decrement               | `op_dec`         | `op_dec([1, 0]) => (0, 1)`
