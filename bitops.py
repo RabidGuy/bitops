@@ -162,6 +162,30 @@ def op_dec(bits):
     return tuple(accumulator)
 
 
+# -- Conversions --
+
+def binary_to_decimal(bits):
+    count = 0
+    for i in range(len(bits)):
+        if bits[i] == 1:
+            count += 2**(len(bits) - i - 1)
+    return count
+
+def decimal_to_binary(decimal, bitlength):
+    if decimal >= 2**bitlength:
+        raise ValueError(
+            "decimal too high for bitlength {}: {} > {}"
+            "".format(bitlength, decimal, 2**bitlength - 1))
+    if decimal < 0:
+        raise ValueError("decimal too low: {} < 0".format(decimal))
+    bits = [0] * bitlength
+    for i in range(bitlength):
+        if decimal >= 2**(bitlength - i - 1):
+            bits[i] = 1
+            decimal -= 2**(bitlength - i - 1)
+    return tuple(bits)
+
+
 # -- Internal utilities --
 
 def _one(length):
