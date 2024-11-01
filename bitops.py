@@ -40,8 +40,8 @@ Iterables are treated as big-endian.
 
 """
 
-version = "v1.0.1"
-version_iterable = [1, 0, 1]
+version = "v1.1.0"
+version_iterable = [1, 1, 0]
 
 import inspect
 
